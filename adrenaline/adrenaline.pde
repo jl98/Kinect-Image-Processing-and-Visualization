@@ -68,7 +68,6 @@ void setup () {
 void draw () {
   if(!complete) {
     getAdrenaline();
-    updateBoxes();
     updateGradient(percentGradientLine);
     resetVariables();
     
