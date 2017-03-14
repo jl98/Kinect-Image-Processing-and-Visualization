@@ -4,9 +4,10 @@ import org.openkinect.processing.*;
 Kinect2 kinect2;
 
 float minThresh = 480;
-float maxThresh = 830;
+float maxThresh = 2048;
 PImage img;
 PFont f; 
+//String text_arr[] = {"HOTLINE", "1-800", "BLING", "GUD", "RINGGG", "U USED 2", "@ ME", "chill", "phone", "I feel", "fam", "k", "HMU", "luv", "left", "the", "city", "get along"};
 
 void setup() {
   //fullScreen();
@@ -21,9 +22,10 @@ void setup() {
 
 
 void draw() {
-  background(0);
-  textFont(f, 16);
+  background(255, 200, 200);
+  textFont(f, 12);
   fill(255);
+
   img.loadPixels();
   
   //minThresh = map(mouseX, 0, width, 0, 4500);
@@ -35,25 +37,30 @@ void draw() {
     
   //make new pixel object then scale that using.resize
   
-  float sumX = 0;
-  float sumY = 0;
-  float totalPixels = 0;
+  //float sumX = 0;
+  //float sumY = 0;
+  //float totalPixels = 0;
   
-  for (int x = 0; x < kinect2.depthWidth; x+=10) {
-    for (int y = 0; y < kinect2.depthHeight; y+=10) {
+  int rand;
+  
+  for (int x = 0; x < kinect2.depthWidth; x+=26) {
+    for (int y = 0; y < kinect2.depthHeight; y+=12) {
       int offset = x + y * kinect2.depthWidth;
       int d = depth[offset];
       
     
       if (d > minThresh && d < maxThresh) {
         img.pixels[offset] = color(255, 0, 150);
-        text("hello", x, y); 
-        sumX += x;
-        sumY += y;
-        totalPixels++;
+        //rand = (int)random(18);
+        //println(text_arr[rand]);
+        //text(text_arr[rand], x, y); 
+        text("LA-HACKS", x, y);
+        //sumX += x;
+        //sumY += y;
+        //totalPixels++;
         
       } else {
-        img.pixels[offset] = color(0);
+        img.pixels[offset] = color(255, 200, 200);
       }  
     }
   }
@@ -71,10 +78,12 @@ void draw() {
   img.updatePixels();
   image(img, 0, 0);
   
+  /*
   float avgX = sumX / totalPixels;
   float avgY = sumY / totalPixels;
   fill(150,0,255);
   ellipse(avgX, avgY, 64, 64);
+  */
   
   //fill(255);
   //textSize(32);
