@@ -100,7 +100,6 @@ void getAdrenaline () {
   }
   if(totalChange < 500) {totalChange = 0;}
   increment = -1*(int)map(totalChange, 0, 500, 10, 0)/100;
-  if(increment > 0) {}
   percentGradientLine += increment;
   if(percentGradientLine > 0 && timer %  10 == 0) {percentGradientLine--;}
   overflow = 100*(spread/(double)totalHeight);
